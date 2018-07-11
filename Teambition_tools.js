@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         New Userscript
-// @namespace    http://tampermonkey.net/
+// @name         Teambition tools
+// @namespace    https://gist.github.com/libook
 // @version      0.1
-// @description  try to take over the world!
-// @author       You
+// @description  Tools for teambition
+// @author       libook7@gmail.com
 // @match        https://www.teambition.com/project/5281ab64984dc73f1d002415/tasks/scrum/591575f1bff1d5669446550a
 // @grant        none
 // ==/UserScript==
