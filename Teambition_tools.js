@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Teambition tools
 // @namespace    https://gist.github.com/libook
-// @version      0.1.2
+// @version      0.1.3
 // @description  Tools for teambition
 // @author       libook7@gmail.com
 // @match        https://www.teambition.com/project/5281ab64984dc73f1d002415/tasks/scrum/591575f1bff1d5669446550a
@@ -43,15 +43,16 @@
             menu.className = "toolb";
             const entrancePosition = entrance.getBoundingClientRect();
             const style = {
-                "zIndex": 1000,
-                "position": "fixed",
-                "color": "gray",
-                "backgroundColor": "white",
-                "top": entrancePosition.bottom + 'px',
-                "left": entrancePosition.left + 'px',
-                "padding": "14px 16px 14px 16px",
-                "display": "none",
-            };
+                    "zIndex": 1000,
+                    "position": "fixed",
+                    "color": "gray",
+                    "backgroundColor": "white",
+                    "top": entrancePosition.bottom + 'px',
+                    "left": entrancePosition.left + 'px',
+                    "padding": "14px 16px 14px 16px",
+                    "display": "none",
+                    "boxShadow": "0 2px 12px 0 rgba(0,0,0,.12)",
+                };
             Object.assign(menu.style, style);
             menu.addEventListener('mouseleave', () => {
                 menu.style.display = 'none';
