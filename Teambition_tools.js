@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Teambition tools
 // @namespace    https://gist.github.com/libook
-// @version      0.1.1
+// @version      0.1.2
 // @description  Tools for teambition
 // @author       libook7@gmail.com
 // @match        https://www.teambition.com/project/5281ab64984dc73f1d002415/tasks/scrum/591575f1bff1d5669446550a
