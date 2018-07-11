@@ -1,19 +1,39 @@
 // ==UserScript==
 // @name         Teambition tools
 // @namespace    https://gist.github.com/libook
-// @version      0.1.6
+// @version      0.2.0
 // @description  Tools for teambition
 // @author       libook7@gmail.com
-// @match        https://www.teambition.com/project/5281ab64984dc73f1d002415/tasks/scrum/591575f1bff1d5669446550a
+// @match        https://www.teambition.com/project/*/tasks/scrum/*
 // @grant        none
 // ==/UserScript==
+
+/**
+ * 列表想加跳转只需要在列表名中加※符号
+ */
 
 (function () {
     'use strict';
 
     function install() {
 
-        let menu, entrance;
+        let menu, entrance, projectId, scrumId;
+
+        {
+            // 从URL中拿取参数
+            const url = window.location.href;
+            const urlParts = url.split('/');
+            for (let urlPartsIndex = 0; urlPartsIndex < urlParts.length; urlPartsIndex++) {
+                switch (urlParts[urlPartsIndex]) {
+                    case 'project':
+                        projectId = urlParts[urlPartsIndex + 1];
+                        break;
+                    case 'scrum':
+                        scrumId = urlParts[urlPartsIndex + 1];
+                        break;
+                }
+            }
+        }
 
         {
             // 入口按钮
@@ -103,8 +123,15 @@
                     list.appendChild(a);
                 };
 
-                appendJumpButton('跳转到耻辱柱3次', '[data-id="5abaf81d17cf3f0012a79fce"]');
-                appendJumpButton('跳转到拆分后', '[data-id="59ffe71302727b70ae2a2880"]');
+                fetch(`https://www.teambition.com/api/stages?_tasklistId=${scrumId}&_=${Date.now()}`)
+                    .then((response) => response.json())
+                    .then((taskList) => {
+                        for (let task of taskList) {
+                            if (task.name.indexOf('※') >= 0) {
+                                appendJumpButton(task.name.replace(/※/, ''), `[data-id="${task._id}"]`);
+                            }
+                        }
+                    });
             }
         }
     }
