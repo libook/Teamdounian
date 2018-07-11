@@ -11,14 +11,14 @@
 (function () {
     'use strict';
 
-    let menu;
+    let menu, entrance;
 
     {
         // 入口按钮
-        const entrance = document.createElement('span');
+        entrance = document.createElement('span');
         entrance.id = 'toolb-entrance';
         entrance.className = 'logo';
-        entrance.textContent = '逗年TB工具箱';
+        entrance.textContent = '¯\\_(ツ)_/¯逗年TB工具箱';
         entrance.addEventListener('mouseover', () => {
             menu.style.display = 'block';
         });
@@ -39,18 +39,25 @@
         menu = document.createElement('div');
         menu.id = "toolb-menu";
         menu.className = "toolb";
+        const entrancePosition = entrance.getBoundingClientRect();
         const style = {
             "zIndex": 1000,
             "position": "fixed",
             "color": "gray",
             "backgroundColor": "white",
-            "left": "50%",
+            "top": entrancePosition.bottom + 'px',
+            "left": entrancePosition.left + 'px',
             "padding": "14px 16px 14px 16px",
             "display": "none",
         };
         Object.assign(menu.style, style);
         menu.addEventListener('mouseleave', () => {
             menu.style.display = 'none';
+        });
+        window.addEventListener("resize", () => {
+            const entrancePosition = entrance.getBoundingClientRect();
+            menu.style.top = entrancePosition.bottom + 'px';
+            menu.style.left = entrancePosition.left + 'px';
         });
         document.body.appendChild(menu);
 
