@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Teambition tools
 // @namespace    https://gist.github.com/libook
-// @version      0.1.4
+// @version      0.1.5
 // @description  Tools for teambition
 // @author       libook7@gmail.com
 // @match        https://www.teambition.com/project/5281ab64984dc73f1d002415/tasks/scrum/591575f1bff1d5669446550a
@@ -49,9 +49,9 @@
                 "backgroundColor": "white",
                 "top": entrancePosition.bottom + 'px',
                 "left": entrancePosition.left + 'px',
-                "padding": "14px 16px 14px 16px",
                 "display": "none",
                 "boxShadow": "0 2px 12px 0 rgba(0,0,0,.12)",
+                "borderRadius": "4px",
             };
             Object.assign(menu.style, style);
             menu.addEventListener('mouseleave', () => {
@@ -64,29 +64,47 @@
             });
             document.body.appendChild(menu);
 
-            const appendJumpButton = function (text, selector) {
-                const a = document.createElement('a');
-                a.text = text;
-                a.addEventListener('click', () => {
-                    document.querySelector(selector).scrollIntoView();
-                });
+            {
+                // 列表
+                const list = document.createElement('ul');
                 const style = {
-                    "zIndex": 1000,
-                    "color": "gray",
-                    "backgroundColor": "white",
-                    "height": "48px",
-                    "lineHeight": "20px",
-                    "fontSize": "14px",
-                    "fontFamily": "Helvetica Neue,PingFang SC,Microsoft Yahei,微软雅黑,STXihei,华文细黑,sans-serif",
-                    "left": "50%",
-                    "padding": "14px 16px 14px 16px",
+                    "display": "flex",
+                    "flexDirection": "column",
                 };
-                Object.assign(a.style, style);
-                menu.appendChild(a);
-            };
+                Object.assign(list.style, style);
+                menu.appendChild(list);
 
-            appendJumpButton('跳转到耻辱柱3次', '[data-id="5abaf81d17cf3f0012a79fce"]');
-            appendJumpButton('跳转到拆分后', '[data-id="59ffe71302727b70ae2a2880"]');
+                const appendJumpButton = function (text, selector) {
+                    const a = document.createElement('a');
+                    a.text = text;
+                    a.addEventListener('click', () => {
+                        document.querySelector(selector).scrollIntoView();
+                    });
+                    const style = {
+                        "color": "gray",
+                        "backgroundColor": "white",
+                        "lineHeight": "14px",
+                        "fontSize": "14px",
+                        "fontFamily": "Helvetica Neue,PingFang SC,Microsoft Yahei,微软雅黑,STXihei,华文细黑,sans-serif",
+                        "left": "50%",
+                        "margin": "8px 8px 8px 8px",
+                        "padding": "8px 8px 8px 8px",
+                        "textAlign": "center",
+                        "borderRadius": "4px",
+                    };
+                    a.addEventListener('mouseover', () => {
+                        a.style.backgroundColor = '#eee';
+                    });
+                    a.addEventListener('mouseleave', () => {
+                        a.style.backgroundColor = 'white';
+                    });
+                    Object.assign(a.style, style);
+                    list.appendChild(a);
+                };
+
+                appendJumpButton('跳转到耻辱柱3次', '[data-id="5abaf81d17cf3f0012a79fce"]');
+                appendJumpButton('跳转到拆分后', '[data-id="59ffe71302727b70ae2a2880"]');
+            }
         }
     }
 
