@@ -94,7 +94,7 @@
                     "height": "48px",
                     "lineHeight": "20px",
                     "fontSize": "14px",
-                    "fontFamily": "Helvetica Neue,PingFang SC,Microsoft Yahei,\\5FAE\8F6F\96C5\9ED1,STXihei,\\534E\6587\7EC6\9ED1,sans-serif",
+                    "fontFamily": "Helvetica Neue,PingFang SC,Microsoft Yahei,微软雅黑,STXihei,华文细黑,sans-serif",
                     "left": "50%",
                     "padding": "14px 16px 14px 16px",
                 };
