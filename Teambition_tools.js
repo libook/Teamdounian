@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Teambition tools
 // @namespace    https://gist.github.com/libook
-// @version      0.2.0
+// @version      0.2.1
 // @description  Tools for teambition
 // @author       libook7@gmail.com
 // @match        https://www.teambition.com/project/*/tasks/scrum/*
@@ -44,10 +44,20 @@
             entrance.addEventListener('mouseover', () => {
                 menu.style.display = 'block';
             });
-            const style = {};
+            entrance.addEventListener('click', (event) => {
+                // 拦截点击事件
+                event.stopPropagation();
+            });
+            const style = {
+                "fontWeight": 900,
+            };
             Object.assign(entrance.style, style);
             let logoElement = document.querySelector('span[class^="logo"]');
             logoElement.parentElement.replaceChild(entrance, logoElement);
+            try {
+                document.querySelector('div[class^="trigger"]').remove();
+            } catch (error) {
+            }
         }
 
         {
@@ -136,9 +146,10 @@
         }
     }
 
-    const interval = setInterval(() => {
-        if (document.querySelector('span[class^="logo"]')) {
-            window.clearInterval(interval);
+    let urlCache;
+    setInterval(() => {
+        if (document.querySelector('span[class^="logo"]') && (urlCache !== window.location.href)) {
+            urlCache = window.location.href;
             install();
         }
     }, 1000);
