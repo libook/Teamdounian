@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Teambition tools
 // @namespace    https://gist.github.com/libook
-// @version      0.3.0
+// @version      0.4.0
 // @description  Tools for teambition
 // @author       libook7@gmail.com
 // @match        https://www.teambition.com/project/*/tasks/scrum/*
@@ -14,6 +14,8 @@
 
 (function () {
     'use strict';
+
+    let scanTimer;
 
     function install() {
 
@@ -133,6 +135,9 @@
                     }
                 };
 
+                // 我自己的logo style，用于定位和我有关的东西
+                const myAvatarStyle = document.querySelector('div[class^="user-info-trigger"]>span').attributes.style.value;
+
                 {
                     // 跳转展示List
                     const appendJumpButton = function (text, selector) {
@@ -159,7 +164,6 @@
                     for (let t = 0; t < 2; t++) {// 强行触发加载视图菜单
                         document.querySelector('a.nav-menu-handler[data-menu=filter]').click();
                     }
-                    const myAvatarStyle = document.querySelector('div[class^="user-info-trigger"]>span').attributes.style.value;
                     const mySelf = document.querySelector(`div.filter-category>ul.list>li.member-wrap>span[style='${myAvatarStyle}']`);
 
                     const showMine = new Button();
@@ -167,6 +171,36 @@
                     showMine.addEventListener('click', () => {
                         mySelf.click();
                     });
+                }
+
+                {
+                    // 高亮我的卡片
+                    if (scanTimer) {
+                        window.clearInterval(scanTimer);
+                    }
+                    const heighLightMyCards = function () {
+                        const myCardAvatarList = document.querySelectorAll(`
+                            #content > 
+                            div.project-app-view > 
+                            div > 
+                            div > 
+                            ul > 
+                            li > 
+                            div > 
+                            section > 
+                            ul.scrum-stage-tasks > 
+                            li > 
+                            div > 
+                            div.task-content-set > 
+                            header > 
+                            span[style='${myAvatarStyle}']
+                            `);
+                        for (let myCardAvatar of myCardAvatarList) {
+                            myCardAvatar.parentElement.parentElement.parentElement.style.backgroundColor = 'yellow';
+                        }
+                    };
+
+                    window.setInterval(heighLightMyCards, 2000);
                 }
             }
         }
