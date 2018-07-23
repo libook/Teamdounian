@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Teambition tools
 // @namespace    https://gist.github.com/libook
-// @version      0.2.1
+// @version      0.3.0
 // @description  Tools for teambition
 // @author       libook7@gmail.com
 // @match        https://www.teambition.com/project/*/tasks/scrum/*
@@ -105,50 +105,80 @@
                 Object.assign(list.style, style);
                 menu.appendChild(list);
 
-                const appendJumpButton = function (text, selector) {
-                    const a = document.createElement('a');
-                    a.text = text;
-                    a.addEventListener('click', () => {
-                        document.querySelector(selector).scrollIntoView();
-                    });
-                    const style = {
-                        "color": "gray",
-                        "backgroundColor": "white",
-                        "lineHeight": "14px",
-                        "fontSize": "14px",
-                        "fontFamily": "Helvetica Neue,PingFang SC,Microsoft Yahei,微软雅黑,STXihei,华文细黑,sans-serif",
-                        "left": "50%",
-                        "margin": "8px 8px 0 8px",
-                        "padding": "8px 8px 8px 8px",
-                        "textAlign": "center",
-                        "borderRadius": "4px",
-                    };
-                    a.addEventListener('mouseover', () => {
-                        a.style.backgroundColor = '#eee';
-                    });
-                    a.addEventListener('mouseleave', () => {
-                        a.style.backgroundColor = 'white';
-                    });
-                    Object.assign(a.style, style);
-                    list.appendChild(a);
+                const Button = class {
+                    constructor() {
+                        this.element = document.createElement('a');
+                        const style = {
+                            "color": "gray",
+                            "backgroundColor": "white",
+                            "lineHeight": "14px",
+                            "fontSize": "14px",
+                            "fontFamily": "Helvetica Neue,PingFang SC,Microsoft Yahei,微软雅黑,STXihei,华文细黑,sans-serif",
+                            "left": "50%",
+                            "margin": "8px 8px 0 8px",
+                            "padding": "8px 8px 8px 8px",
+                            "textAlign": "center",
+                            "borderRadius": "4px",
+                        };
+                        this.element.addEventListener('mouseover', () => {
+                            this.element.style.backgroundColor = '#eee';
+                        });
+                        this.element.addEventListener('mouseleave', () => {
+                            this.element.style.backgroundColor = 'white';
+                        });
+                        Object.assign(this.element.style, style);
+                        list.appendChild(this.element);
+
+                        return this.element;
+                    }
                 };
 
-                fetch(`https://www.teambition.com/api/stages?_tasklistId=${scrumId}&_=${Date.now()}`)
-                    .then((response) => response.json())
-                    .then((taskList) => {
-                        for (let task of taskList) {
-                            if (task.name.indexOf('※') >= 0) {
-                                appendJumpButton(task.name.replace(/※/, ''), `[data-id="${task._id}"]`);
+                {
+                    // 跳转展示List
+                    const appendJumpButton = function (text, selector) {
+                        const a = new Button();
+                        a.text = text;
+                        a.addEventListener('click', () => {
+                            document.querySelector(selector).scrollIntoView();
+                        });
+                    };
+
+                    fetch(`https://www.teambition.com/api/stages?_tasklistId=${scrumId}&_=${Date.now()}`)
+                        .then((response) => response.json())
+                        .then((taskList) => {
+                            for (let task of taskList) {
+                                if (task.name.indexOf('※') >= 0) {
+                                    appendJumpButton(task.name.replace(/※/, ''), `[data-id="${task._id}"]`);
+                                }
                             }
-                        }
+                        });
+                }
+
+                {
+                    // 只看我自己的
+                    for (let t = 0; t < 2; t++) {// 强行触发加载视图菜单
+                        document.querySelector('a.nav-menu-handler[data-menu=filter]').click();
+                    }
+                    const myAvatarStyle = document.querySelector('div[class^="user-info-trigger"]>span').attributes.style.value;
+                    const mySelf = document.querySelector(`div.filter-category>ul.list>li.member-wrap>span[style='${myAvatarStyle}']`);
+
+                    const showMine = new Button();
+                    showMine.text = '只看我自己';
+                    showMine.addEventListener('click', () => {
+                        mySelf.click();
                     });
+                }
             }
         }
     }
 
     let urlCache;
     setInterval(() => {
-        if (document.querySelector('span[class^="logo"]') && (urlCache !== window.location.href)) {
+        if (
+            document.querySelector('span[class^="logo"]') &&// logo出现
+            document.querySelector('.task-card-mode') &&// 卡片加载出来意味着绝大多数元素已经加载完毕
+            (urlCache !== window.location.href)// 当前页面地址没变
+        ) {
             urlCache = window.location.href;
             install();
         }
