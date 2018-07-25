@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/libook/Teamdounian/issues"
   },
-  "homepage": "https://github.com/libook/Teamdounian#readme"
+  "homepage": "https://github.com/libook/Teamdounian#readme",
+  "dependencies": {
+    "webpack": "^4.16.2"
+  }
 }
