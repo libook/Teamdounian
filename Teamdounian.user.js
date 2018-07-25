@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Teambition tools
+// @name         Teamdounian
 // @namespace    https://gist.github.com/libook
 // @version      0.4.0
 // @description  Tools for teambition
