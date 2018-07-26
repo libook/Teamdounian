@@ -1,12 +1,12 @@
 {
   "name": "teamdounian",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Tools for teambition",
   "main": "dist/Teamdounian.user.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config config/webpack.config.js && node config/addHeader.js",
-    "version":"npm run build && git add dist"
+    "version": "npm run build && git add dist"
   },
   "repository": {
     "type": "git",

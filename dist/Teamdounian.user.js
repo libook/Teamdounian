@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         teamdounian
 // @namespace    https://github.com/libook
-// @version      0.4.0
+// @version      1.0.0
 // @description  Tools for teambition
 // @author       libook7@gmail.com
 // @match        https://www.teambition.com/project/*/tasks/scrum/*
