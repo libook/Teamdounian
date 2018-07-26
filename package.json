@@ -4,7 +4,8 @@
   "description": "Tools for teambition",
   "main": "dist/Teamdounian.user.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config config/webpack.config.js && node config/addHeader.js"
   },
   "repository": {
     "type": "git",
@@ -15,13 +16,18 @@
     "tampermonkey",
     "user.js"
   ],
-  "author": "Daniel Li <libook7@gmail.com>",
+  "author": {
+    "name": "Daniel Li",
+    "email": "libook7@gmail.com",
+    "url": "https://github.com/libook"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/libook/Teamdounian/issues"
   },
   "homepage": "https://github.com/libook/Teamdounian#readme",
-  "dependencies": {
-    "webpack": "^4.16.2"
+  "devDependencies": {
+    "webpack": "^4.16.2",
+    "webpack-command": "^0.4.1"
   }
 }
