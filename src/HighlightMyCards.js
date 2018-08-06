@@ -36,6 +36,6 @@ export default class HighlightMyCards {
             }
         };
 
-        window.setInterval(heighLightMyCards, 2000);
+        scanTimer = window.setInterval(heighLightMyCards, 2000);
     }
 };
