@@ -1,6 +1,6 @@
 {
   "name": "teamdounian",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tools for teambition",
   "main": "dist/Teamdounian.user.js",
   "scripts": {
