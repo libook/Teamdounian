@@ -14,7 +14,17 @@ export default class JumpButton {
             const a = new Button(list);
             a.text = text;
             a.addEventListener('click', () => {
-                document.querySelector(selector).scrollIntoView();
+                const element = document.querySelector(selector);
+                // 滚动到列表
+                element.scrollIntoView();
+
+                // 标黄易于辨认
+                {
+                    element.style.backgroundColor = "yellow";
+                    window.setTimeout(function () {
+                        element.style.backgroundColor = "";
+                    }, 3000);// 一段时间后恢复正常
+                }
             });
         };
 
