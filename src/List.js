@@ -7,6 +7,7 @@
 import JumpButton from "./JumpButton";
 import OnlySeeMySelf from "./OnlySeeMySelf";
 import HighlightMyCards from "./HighlightMyCards";
+import SetStartDateToNow from "./SetStartDateToNow";
 
 export default class List {
     constructor(menu) {
@@ -23,6 +24,8 @@ export default class List {
         new JumpButton(list);
 
         new OnlySeeMySelf(list);
+
+        new SetStartDateToNow(list);
 
         new HighlightMyCards();
     }

@@ -5,7 +5,7 @@
 'use strict';
 
 export default function getParams() {
-    let projectId, scrumId;
+    let projectId, scrumId, taskId;
     const url = window.location.href;
     const urlParts = url.split('/');
     for (let urlPartsIndex = 0; urlPartsIndex < urlParts.length; urlPartsIndex++) {
@@ -16,7 +16,9 @@ export default function getParams() {
             case 'scrum':
                 scrumId = urlParts[urlPartsIndex + 1];
                 break;
+            case 'task':
+                taskId = urlParts[urlPartsIndex + 1];
         }
     }
-    return { projectId, scrumId };
+    return { projectId, scrumId, taskId };
 };
