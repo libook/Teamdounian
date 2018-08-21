@@ -32,7 +32,7 @@ export default class HighlightMyCards {
                             span[style='${getMyAvatarStyle()}']
                             `);
             for (let myCardAvatar of myCardAvatarList) {
-                myCardAvatar.parentElement.parentElement.parentElement.style.backgroundColor = 'yellow';
+                myCardAvatar.parentElement.parentElement.parentElement.style.backgroundColor = '#3da8f5';
             }
         };
 

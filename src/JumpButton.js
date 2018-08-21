@@ -20,7 +20,7 @@ export default class JumpButton {
 
                 // 标黄易于辨认
                 {
-                    element.style.backgroundColor = "yellow";
+                    element.style.backgroundColor = "#3da8f5";
                     window.setTimeout(function () {
                         element.style.backgroundColor = "";
                     }, 3000);// 一段时间后恢复正常
