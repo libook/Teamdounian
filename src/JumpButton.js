@@ -16,7 +16,7 @@ export default class JumpButton {
             a.addEventListener('click', () => {
                 const element = document.querySelector(selector);
                 // 滚动到列表
-                element.scrollIntoView();
+                element.scrollIntoView({ "behavior": "smooth", "block": "center", "inline": "start" });
 
                 // 标黄易于辨认
                 {
