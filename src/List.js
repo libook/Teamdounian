@@ -23,7 +23,7 @@ export default class List {
 
         new JumpButton(list);
 
-        new OnlySeeMySelf(list);
+        // new OnlySeeMySelf(list);
 
         new SetStartDateToNow(list);
 

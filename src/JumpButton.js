@@ -31,9 +31,11 @@ export default class JumpButton {
         fetch(`https://www.teambition.com/api/stages?_tasklistId=${getParams().scrumId}&_=${Date.now()}`)
             .then((response) => response.json())
             .then((taskList) => {
-                for (let task of taskList) {
+                console.log(taskList);
+                for (let taskIndex in taskList) {
+                    const task = taskList[taskIndex];
                     if (task.name.indexOf('※') >= 0) {
-                        appendJumpButton(task.name.replace(/※/, ''), `[data-id="${task._id}"]`);
+                        appendJumpButton(task.name.replace(/※/, ''), `div.kanban-single-lane-body-wrapper>div:nth-child(0n+${Number(taskIndex) + 1})`);
                     }
                 }
             });

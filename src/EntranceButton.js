@@ -18,7 +18,7 @@ export default class EntranceButton {
             "fontWeight": 900,
         };
         Object.assign(this.element.style, style);
-        let logoElement = document.querySelector('span[class^="logo"]');
+        let logoElement = document.querySelector('div[class^="release-ribbon"]');
         logoElement.parentElement.replaceChild(this.element, logoElement);
         try {
             document.querySelector('div[class^="trigger"]').remove();

@@ -16,8 +16,6 @@ export default function getParams() {
             case 'scrum':
                 scrumId = urlParts[urlPartsIndex + 1];
                 break;
-            case 'task':
-                taskId = urlParts[urlPartsIndex + 1];
         }
     }
     return { projectId, scrumId, taskId };

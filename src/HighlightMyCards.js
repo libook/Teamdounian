@@ -16,23 +16,33 @@ export default class HighlightMyCards {
         }
         const heighLightMyCards = function () {
             const myCardAvatarList = document.querySelectorAll(`
-                            #content > 
-                            div.project-app-view > 
-                            div > 
-                            div > 
-                            ul > 
-                            li > 
-                            div > 
-                            section > 
-                            ul.scrum-stage-tasks > 
-                            li > 
-                            div > 
-                            div.task-content-set > 
-                            header > 
-                            span[style='${getMyAvatarStyle()}']
+                            html >
+                            body >
+                            div#teambition-web-content.clearfix >
+                            div.project-app-view >
+                            div.board-view >
+                            div.board-flex-view >
+                            div.board-right-view >
+                            div.kanban-view >
+                            div.kanban-contents-wrapper >
+                            div.kanban-root >
+                            div.kanban-scroll-container.kanban-single-lane-scroll >
+                            div.kanban-single-lane-body >
+                            div.kanban-single-lane-body-wrapper >
+                            div.kanban-single-list >
+                            div.kanban-single-list-contents >
+                            div.kanban-bucket >
+                            div.kanban-droppable-bucket.kanban-droppable-bucket-single-list >
+                            div.kanban-droppable-bucket-cards >
+                            div.kanban-dnd-card >
+                            div.task-card >
+                            div.task-card-body >
+                            div.task-content-set >
+                            header.task-content-wrapper >
+                            span.flex-static.hinted[style='${getMyAvatarStyle()}']
                             `);
             for (let myCardAvatar of myCardAvatarList) {
-                myCardAvatar.parentElement.parentElement.parentElement.style.backgroundColor = '#3da8f5';
+                myCardAvatar.parentElement.parentElement.parentElement.parentElement.style.backgroundColor = '#3da8f5';
             }
         };
 

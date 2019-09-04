@@ -11,8 +11,8 @@ let paramsCache = {};
 setInterval(() => {
     const nowParams = getParams();
     if (
-        document.querySelector('span[class^="logo"]') &&// logo出现
-        document.querySelector('.task-card-mode') &&// 卡片加载出来意味着绝大多数元素已经加载完毕
+        document.querySelector('div[class^="release-ribbon"]') &&// logo出现
+        document.querySelector('.kanban-dnd-card') &&// 卡片加载出来意味着绝大多数元素已经加载完毕
         (paramsCache.projectId !== nowParams.projectId || paramsCache.scrumId !== nowParams.scrumId)// 当前项目和任务分组没变
     ) {
         paramsCache = nowParams;

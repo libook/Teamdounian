@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/libook/Teamdounian#readme",
   "devDependencies": {
-    "webpack": "^4.16.2",
-    "webpack-command": "^0.4.1"
+    "webpack": "^4.39.3",
+    "webpack-command": "^0.4.2"
   }
 }
