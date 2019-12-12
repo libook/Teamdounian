@@ -4,6 +4,7 @@
 
 'use strict';
 
+import ExportTasks from "./Component/ExportTasks";
 import JumpButton from "./Component/JumpButton";
 import OnlySeeMySelf from "./Component/OnlySeeMySelf";
 import HighlightMyCards from "./Component/HighlightMyCards";
@@ -28,5 +29,7 @@ export default class List {
         new SetStartDateToNow(list);
 
         new HighlightMyCards();
+
+        new ExportTasks(list);
     }
 };
