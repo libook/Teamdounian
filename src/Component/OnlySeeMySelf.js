@@ -4,8 +4,8 @@
 
 'use strict';
 
-import Button from "./Button";
-import getMyAvatarStyle from './getMyAvatarStyle';
+import Button from "../Button";
+import getMyAvatarStyle from '../getMyAvatarStyle';
 
 export default class OnlySeeMySelf {
     constructor(list) {

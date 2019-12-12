@@ -4,7 +4,7 @@
 
 'use strict';
 
-import getMyAvatarStyle from './getMyAvatarStyle';
+import getMyAvatarStyle from '../getMyAvatarStyle';
 
 let scanTimer;
 

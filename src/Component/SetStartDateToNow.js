@@ -4,8 +4,8 @@
 
 'use strict';
 
-import Button from "./Button";
-import getParams from './getParams';
+import Button from "../Button";
+import getParams from '../getParams';
 
 export default class SetStartDateToNow {
     constructor(list) {

@@ -4,10 +4,10 @@
 
 'use strict';
 
-import JumpButton from "./JumpButton";
-import OnlySeeMySelf from "./OnlySeeMySelf";
-import HighlightMyCards from "./HighlightMyCards";
-import SetStartDateToNow from "./SetStartDateToNow";
+import JumpButton from "./Component/JumpButton";
+import OnlySeeMySelf from "./Component/OnlySeeMySelf";
+import HighlightMyCards from "./Component/HighlightMyCards";
+import SetStartDateToNow from "./Component/SetStartDateToNow";
 
 export default class List {
     constructor(menu) {
