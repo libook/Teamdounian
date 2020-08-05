@@ -5,7 +5,7 @@
   "main": "dist/Teamdounian.user.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config config/webpack.config.js && node config/addHeader.js",
+    "build": "webpack-cli --config config/webpack.config.js && node config/addHeader.js",
     "version": "npm run build && git add dist"
   },
   "repository": {
@@ -29,6 +29,6 @@
   "homepage": "https://github.com/libook/Teamdounian#readme",
   "devDependencies": {
     "webpack": "^4.44.1",
-    "webpack-command": "^0.5.0"
+    "webpack-cli": "^3.3.12"
   }
 }
